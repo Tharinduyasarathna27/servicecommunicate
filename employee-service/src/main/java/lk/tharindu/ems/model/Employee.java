@@ -19,7 +19,7 @@ public class Employee {
 	 List<Telephone> telephones;
 
 	 @Transient
-	 String allocation;
+	 Allocation[] allocation;
 	 
 
 	@ManyToMany(cascade = CascadeType.ALL)
@@ -59,11 +59,11 @@ public class Employee {
 		this.projects = projects;
 	}
 
-	public String getAllocation() {
+	public Allocation[] getAllocation() {
 		return allocation;
 	}
 
-	public void setAllocation(String allocation) {
+	public void setAllocation(Allocation[] allocation) {
 		this.allocation = allocation;
 	}
 }

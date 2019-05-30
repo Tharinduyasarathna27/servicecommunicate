@@ -3,6 +3,7 @@ package lk.tharindu.ems.service;
 import java.util.List;
 import java.util.Optional;
 
+import lk.tharindu.ems.model.Allocation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -53,10 +54,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 			httpHeaders.add("Authorization","bearer".concat(oAuth2AuthenticationDetails.getTokenValue()));
 
 			//
-			ResponseEntity<String> responseEntity;
+			ResponseEntity<Allocation[]> responseEntity;
 			HttpEntity<String> httpEntity=new HttpEntity<>("",httpHeaders);
-			 responseEntity=restTemplate.exchange("http://localhost:9090/alscloud/allocations/".
-					 concat(employee.getId().toString()),HttpMethod.GET,httpEntity,String.class);
+			 responseEntity=restTemplate.exchange("http://localhost:9090/emscloud/allocations/".
+					 concat(employee.getId().toString()),HttpMethod.GET,httpEntity, Allocation[].class);
 
 
 					 Employee employee1= optionalEmployee.get();
